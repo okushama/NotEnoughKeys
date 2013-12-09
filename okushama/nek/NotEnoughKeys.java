@@ -1,5 +1,6 @@
 package okushama.nek;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,9 +31,12 @@ public class NotEnoughKeys {
     @EventHandler
     public static void preInit(FMLPreInitializationEvent event) {
     	if(event.getSide() == Side.CLIENT){
+    		ArrayList<KeyBinding> vanillaKeys = new ArrayList<KeyBinding>();
 	    	for(KeyBinding kb : Minecraft.getMinecraft().gameSettings.keyBindings){
-	    		KeybindTracker.vanillaKeybinds.add(kb);
+	    		vanillaKeys.add(kb);
 	    	}
+    		KeybindTracker.modKeybinds.put("Minecraft", vanillaKeys);
+
     	}
     }
 

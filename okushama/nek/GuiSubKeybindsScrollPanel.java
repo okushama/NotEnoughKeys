@@ -64,6 +64,7 @@ public class GuiSubKeybindsScrollPanel extends GuiSlot
                 options.setKeyBinding(glob, -100);
                 selected = -1;
                 KeyBinding.resetKeyBindingArrayAndHash();
+        		KeybindTracker.updateConflictCategory();
             }
         }
     }
@@ -153,6 +154,7 @@ public class GuiSubKeybindsScrollPanel extends GuiSlot
             options.setKeyBinding(glob, i);
             selected = -1;
             KeyBinding.resetKeyBindingArrayAndHash();
+    		KeybindTracker.updateConflictCategory();
             return false;
         }
         return true;

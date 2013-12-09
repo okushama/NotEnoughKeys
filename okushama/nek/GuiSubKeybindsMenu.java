@@ -63,6 +63,7 @@ public class GuiSubKeybindsMenu extends GuiScreen
         this.buttonList.add(new GuiButton(200, this.width / 2 - 100, this.height - 28, I18n.getString("gui.done")));
         scrollPane.registerScrollButtons(7, 8);
         this.screenTitle = this.subModID+" "+I18n.getString("controls.title");
+		KeybindTracker.updateConflictCategory();
     }
 
     /**
@@ -81,6 +82,7 @@ public class GuiSubKeybindsMenu extends GuiScreen
      */
     protected void mouseClicked(int par1, int par2, int par3)
     {
+		KeybindTracker.updateConflictCategory();
         super.mouseClicked(par1, par2, par3);
     }
 
@@ -89,6 +91,7 @@ public class GuiSubKeybindsMenu extends GuiScreen
      */
     protected void keyTyped(char par1, int par2)
     {
+		KeybindTracker.updateConflictCategory();
         if (scrollPane.keyTyped(par1, par2))
         {
             super.keyTyped(par1, par2);

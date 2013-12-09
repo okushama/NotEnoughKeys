@@ -16,13 +16,13 @@ public class GuiKeybindsMenu extends GuiScreen{
 	@Override
 	public void initGui() {
 		ArrayList<String> types = new ArrayList<String>();
-		types.add("Minecraft");
 		for(String modtype : KeybindTracker.modKeybinds.keySet()){
 			types.add(modtype);
 		}
 		scroll = new GuiKeybindsScrollPanel(this, types.toArray(new String[0]));
 		scroll.registerScrollButtons(7, 8);		
         this.buttonList.add(new GuiButton(1337, this.width / 2 - 100, this.height - 28, I18n.getString("gui.done")));
+		KeybindTracker.updateConflictCategory();
 		super.initGui();
 	}
 	@Override
@@ -38,6 +38,7 @@ public class GuiKeybindsMenu extends GuiScreen{
 		super.actionPerformed(par1GuiButton);
 		if(par1GuiButton.id == 1337){
 			Minecraft.getMinecraft().displayGuiScreen(new GuiOptions(null, Minecraft.getMinecraft().gameSettings));
+			KeybindTracker.updateConflictCategory();
 			return;
 		}
 	}

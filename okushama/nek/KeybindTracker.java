@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
@@ -22,7 +23,6 @@ import net.minecraft.client.settings.KeyBinding;
 public class KeybindTracker {
 
 	public static HashMap<String, ArrayList<KeyBinding>> modKeybinds = new HashMap<String, ArrayList<KeyBinding>>();
-	public static ArrayList<KeyBinding> vanillaKeybinds = new ArrayList<KeyBinding>();
 	public static HashMap<String, String> modIds = new HashMap<String, String>();
 	
 	public static int getKeybindIndex(KeyBinding kb){
@@ -33,6 +33,46 @@ public class KeybindTracker {
 			}
 		}
 		return -1;
+	}
+	
+	public static String getHostCategory(KeyBinding kb){
+		for(String key : modKeybinds.keySet()){
+			ArrayList<KeyBinding> binds = modKeybinds.get(key);
+			for(KeyBinding bind : binds){
+				if(bind.equals(kb)){
+					return key;
+				}
+			}
+		}
+		return "";
+	}
+	
+	private static ArrayList<KeyBinding> getConflictingKeybinds(){
+		ArrayList<KeyBinding> allTheBinds = new ArrayList<KeyBinding>();
+		ArrayList<KeyBinding> allTheConflicts = new ArrayList<KeyBinding>();
+		for(String key : modKeybinds.keySet()){
+			ArrayList<KeyBinding> binds = modKeybinds.get(key);
+			for(KeyBinding bind : binds){
+				allTheBinds.add(bind);
+			}
+		}
+		for(KeyBinding bind : allTheBinds){
+			for(KeyBinding obind : allTheBinds){
+				if(!obind.keyDescription.equals(bind.keyDescription)){
+					if(obind.keyCode == bind.keyCode){
+						//out.put(getHostCategory(bind)+" and "+getHostCategory(obind), new KeyBinding[]{bind, obind});
+						allTheConflicts.add(bind);
+						allTheConflicts.add(obind);
+						//conflict detected here
+					}
+				}
+			}
+		}
+		HashSet<KeyBinding> hs = new HashSet<KeyBinding>();
+		hs.addAll(allTheConflicts);
+		allTheConflicts.clear();
+		allTheConflicts.addAll(hs);
+		return allTheConflicts;
 	}
 
 	public static void populate() {
@@ -56,6 +96,17 @@ public class KeybindTracker {
 				modKeybinds.put(s, new ArrayList<KeyBinding>());
 			}
 			modKeybinds.get(s).add(kb);
+		}
+		KeybindTracker.updateConflictCategory();
+	}
+	
+	public static void updateConflictCategory(){
+		if(getConflictingKeybinds().size() > 0){
+			modKeybinds.put("Conflicting", getConflictingKeybinds());
+		}else{
+			if(modKeybinds.containsKey("Conflicting")){
+				modKeybinds.remove("Conflicting");
+			}
 		}
 	}
 

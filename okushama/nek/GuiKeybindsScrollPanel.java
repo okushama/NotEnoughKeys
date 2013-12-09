@@ -56,12 +56,9 @@ public class GuiKeybindsScrollPanel extends GuiSlot
             }
             Minecraft.getMinecraft().sndManager.playSoundFX("random.click", 1.0F, 1.0F);
         	String type = buttonNames[selected];
-    		if(type.equals("Minecraft")){
-    			Minecraft.getMinecraft().displayGuiScreen(new GuiSubKeybindsMenu(controls, type, KeybindTracker.vanillaKeybinds.toArray(new KeyBinding[0]),Minecraft.getMinecraft().gameSettings));
-    		}else{
-    			Minecraft.getMinecraft().displayGuiScreen(new GuiSubKeybindsMenu(controls, type, KeybindTracker.modKeybinds.get(type).toArray(new KeyBinding[0]),Minecraft.getMinecraft().gameSettings));
-    		}
-            selected = -1;
+    		Minecraft.getMinecraft().displayGuiScreen(new GuiSubKeybindsMenu(controls, type, KeybindTracker.modKeybinds.get(type).toArray(new KeyBinding[0]),Minecraft.getMinecraft().gameSettings));
+    		KeybindTracker.updateConflictCategory();
+    		selected = -1;
         }
     }
 
@@ -108,6 +105,7 @@ public class GuiKeybindsScrollPanel extends GuiSlot
     {
         if (selected != -1)
         {
+    		KeybindTracker.updateConflictCategory();
             selected = -1;
             return false;
         }
