@@ -46,7 +46,6 @@ public class GuiSubKeybindsScrollPanel extends GuiSlot
     protected int getSize()
     {
     	return keyBindings.length;
-        //return options.keyBindings.length;
     }
 
     @Override
@@ -94,12 +93,6 @@ public class GuiSubKeybindsScrollPanel extends GuiSlot
                 KeyBinding.resetKeyBindingArrayAndHash();
             }
         }
-        
-        for(int i = 0; i < keyBindings.length; i++){
-        	KeyBinding kb = keyBindings[i];
-        	//this.drawKeybindOption(kb, mX, mY,1, Tessellator.instance);
-        }
-
         super.drawScreen(mX, mY, f);
     }
 
@@ -107,8 +100,6 @@ public class GuiSubKeybindsScrollPanel extends GuiSlot
     protected void drawSlot(int index, int xPosition, int yPosition, int l, Tessellator tessellator)
     {
     	String s = I18n.getString(this.keyBindings[index].keyDescription);
-      //  controls.drawTexturedModalRect(xPosition, yPosition, 0, 46 + 1 * 20, 70, 20);
-       // controls.drawString(mc.fontRenderer, s, xPosition + 70 + 4, yPosition + 6, 0xFFFFFFFF);
         int width = 70;
         int height = 20;
         xPosition -= 20;
