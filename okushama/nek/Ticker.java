@@ -9,15 +9,29 @@ import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
 public class Ticker implements ITickHandler{
+	
+	
+	public boolean liteloaderExists = true;
 
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 		if(type.equals(EnumSet.of(TickType.CLIENT))){
+			if(liteloaderExists){
+				try {
+					Class liteloadergui = Class.forName("com.mumfrey.liteloader.gui.GuiControlsPaginated");
+					if(liteloadergui != null){
+						if(Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen.getClass().equals(liteloadergui)){
+							Minecraft.getMinecraft().displayGuiScreen(new GuiKeybindsMenu());
+							NotEnoughKeys.log("Replaced the instance of LiteLoader's controls gui!");
+						}
+					}
+				} catch (ClassNotFoundException e) {
+					liteloaderExists = false;
+				}
+			}
 			if(Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen instanceof GuiControls){
-				//Minecraft.getMinecraft().displayGuiScreen(new GuiKeybinds("IndustrialCraft 2", Minecraft.getMinecraft().gameSettings));
-				//Minecraft.getMinecraft().displayGuiScreen(new GuiKeybinds("Minecraft", Minecraft.getMinecraft().gameSettings));
 				Minecraft.getMinecraft().displayGuiScreen(new GuiKeybindsMenu());
-				NotEnoughKeys.log("Replaced an instance of the controls gui!");
+				NotEnoughKeys.log("Replaced the instance of Minecraft controls gui!");
 			}
 		}
 	}

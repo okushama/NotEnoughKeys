@@ -20,7 +20,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = "notenoughkeys", name = "Not Enough Keys", version = "0.0.2")
+@Mod(modid = "notenoughkeys", name = "Not Enough Keys", version = "0.0.3")
 
 public class NotEnoughKeys {
 
