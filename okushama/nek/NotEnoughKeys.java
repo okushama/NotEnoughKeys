@@ -20,7 +20,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = "notenoughkeys", name = "Not Enough Keys", version = "0.0.3")
+@Mod(modid = "notenoughkeys", name = "Not Enough Keys", version = "0.0.4")
 
 public class NotEnoughKeys {
 
@@ -31,6 +31,7 @@ public class NotEnoughKeys {
     @EventHandler
     public static void preInit(FMLPreInitializationEvent event) {
     	if(event.getSide() == Side.CLIENT){
+    		KeybindTracker.modKeybinds.put("All", new ArrayList<KeyBinding>());   
     		ArrayList<KeyBinding> vanillaKeys = new ArrayList<KeyBinding>();
 	    	for(KeyBinding kb : Minecraft.getMinecraft().gameSettings.keyBindings){
 	    		vanillaKeys.add(kb);

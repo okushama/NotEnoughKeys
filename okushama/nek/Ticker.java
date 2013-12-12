@@ -29,7 +29,8 @@ public class Ticker implements ITickHandler{
 					liteloaderExists = false;
 				}
 			}
-			if(Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen instanceof GuiControls){
+			if(Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen instanceof GuiControls 
+					&& !(Minecraft.getMinecraft().currentScreen instanceof GuiControlsOverride)){
 				Minecraft.getMinecraft().displayGuiScreen(new GuiKeybindsMenu());
 				NotEnoughKeys.log("Replaced the instance of Minecraft controls gui!");
 			}

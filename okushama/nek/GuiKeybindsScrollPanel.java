@@ -54,8 +54,16 @@ public class GuiKeybindsScrollPanel extends GuiSlot
             {
                 selected = i;
             }
-            Minecraft.getMinecraft().sndManager.playSoundFX("random.click", 1.0F, 1.0F);
         	String type = buttonNames[selected];
+        	if(type.equalsIgnoreCase("all")){
+        		Minecraft.getMinecraft().sndManager.playSoundFX("random.click", 1.0F, 1.0F);
+         		Minecraft.getMinecraft().displayGuiScreen(new GuiControlsOverride(controls, Minecraft.getMinecraft().gameSettings));
+         		KeybindTracker.updateConflictCategory();
+         		selected = -1;
+         		return;
+        	}
+        	
+            Minecraft.getMinecraft().sndManager.playSoundFX("random.click", 1.0F, 1.0F);
     		Minecraft.getMinecraft().displayGuiScreen(new GuiSubKeybindsMenu(controls, type, KeybindTracker.modKeybinds.get(type).toArray(new KeyBinding[0]),Minecraft.getMinecraft().gameSettings));
     		KeybindTracker.updateConflictCategory();
     		selected = -1;
