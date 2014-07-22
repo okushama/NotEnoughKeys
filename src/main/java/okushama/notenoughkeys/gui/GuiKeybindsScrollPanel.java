@@ -1,10 +1,11 @@
-package okushama.nek;
+package okushama.notenoughkeys.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ResourceLocation;
+import okushama.notenoughkeys.keys.KeybindTracker;
 
 import org.lwjgl.opengl.GL11;
 

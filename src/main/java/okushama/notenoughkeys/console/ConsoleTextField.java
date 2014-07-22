@@ -1,4 +1,4 @@
-package okushama.nek;
+package okushama.notenoughkeys.console;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;

@@ -1,8 +1,11 @@
-package okushama.nek;
+package okushama.notenoughkeys;
 
 import java.util.EnumSet;
 import java.util.logging.Level;
 
+import okushama.notenoughkeys.gui.GuiControlsOverride;
+import okushama.notenoughkeys.gui.GuiKeybindsMenu;
+import okushama.notenoughkeys.keys.Binds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiControls;
 import cpw.mods.fml.common.ITickHandler;

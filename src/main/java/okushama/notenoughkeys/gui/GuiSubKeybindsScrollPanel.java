@@ -1,4 +1,4 @@
-package okushama.nek;
+package okushama.notenoughkeys.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiSlot;
@@ -8,6 +8,7 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
+import okushama.notenoughkeys.keys.KeybindTracker;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;

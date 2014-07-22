@@ -1,4 +1,4 @@
-package okushama.nek;
+package okushama.notenoughkeys.gui;
 
 import net.minecraft.client.gui.GuiControls;
 import net.minecraft.client.gui.GuiScreen;

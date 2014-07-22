@@ -1,4 +1,4 @@
-package okushama.nek;
+package okushama.notenoughkeys.keys;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 
 import net.minecraft.client.Minecraft;
+import okushama.notenoughkeys.NotEnoughKeys;
 
 import org.lwjgl.input.Keyboard;
 

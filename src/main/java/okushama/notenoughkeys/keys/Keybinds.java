@@ -1,9 +1,10 @@
-package okushama.nek;
+package okushama.notenoughkeys.keys;
 
 import java.util.EnumSet;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import okushama.notenoughkeys.NotEnoughKeys;
 
 import org.lwjgl.input.Keyboard;
 

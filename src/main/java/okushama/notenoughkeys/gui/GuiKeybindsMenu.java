@@ -1,7 +1,8 @@
-package okushama.nek;
+package okushama.notenoughkeys.gui;
 
 import java.util.ArrayList;
 
+import okushama.notenoughkeys.keys.KeybindTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiOptions;

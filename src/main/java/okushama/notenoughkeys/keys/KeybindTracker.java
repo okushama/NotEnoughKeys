@@ -1,4 +1,4 @@
-package okushama.nek;
+package okushama.notenoughkeys.keys;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
 
+import okushama.notenoughkeys.NotEnoughKeys;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;

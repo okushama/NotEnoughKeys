@@ -1,4 +1,4 @@
-package okushama.nek;
+package okushama.notenoughkeys.console;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -12,6 +12,8 @@ import net.minecraft.client.gui.ChatClickData;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.EnumChatFormatting;
+import okushama.notenoughkeys.NotEnoughKeys;
+import okushama.notenoughkeys.keys.Binds;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;

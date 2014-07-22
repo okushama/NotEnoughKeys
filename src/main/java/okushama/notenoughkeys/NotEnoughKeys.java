@@ -1,8 +1,12 @@
-package okushama.nek;
+package okushama.notenoughkeys;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import okushama.notenoughkeys.console.Console;
+import okushama.notenoughkeys.keys.Binds;
+import okushama.notenoughkeys.keys.KeybindTracker;
+import okushama.notenoughkeys.keys.Keybinds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
@@ -40,7 +44,7 @@ public class NotEnoughKeys {
 	public static void init(FMLInitializationEvent e) {
 		TickRegistry.registerTickHandler(new Ticker(), Side.CLIENT);
 		KeyBindingRegistry.registerKeyBinding(new Keybinds());
-    	Binds.init();
+		Binds.init();
 	}
 
 	@EventHandler

@@ -1,5 +1,6 @@
-package okushama.nek;
+package okushama.notenoughkeys.gui;
 
+import okushama.notenoughkeys.keys.KeybindTracker;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
