@@ -14,6 +14,7 @@ public class Ticker implements ITickHandler {
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 		if (type.equals(EnumSet.of(TickType.CLIENT))) {
+			Binds.tick();
 			if (liteloaderExists) {
 				try {
 					Class liteloadergui = Class.forName("com.mumfrey.liteloader.gui.GuiControlsPaginated");
