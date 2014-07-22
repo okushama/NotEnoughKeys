@@ -4,23 +4,20 @@ import java.util.EnumSet;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiControls;
-import net.minecraft.client.gui.GuiOptions;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
-public class Ticker implements ITickHandler{
-	
-	
+public class Ticker implements ITickHandler {
 	public boolean liteloaderExists = true;
 
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
-		if(type.equals(EnumSet.of(TickType.CLIENT))){
-			if(liteloaderExists){
+		if (type.equals(EnumSet.of(TickType.CLIENT))) {
+			if (liteloaderExists) {
 				try {
 					Class liteloadergui = Class.forName("com.mumfrey.liteloader.gui.GuiControlsPaginated");
-					if(liteloadergui != null){
-						if(Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen.getClass().equals(liteloadergui)){
+					if (liteloadergui != null) {
+						if (Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen.getClass().equals(liteloadergui)) {
 							Minecraft.getMinecraft().displayGuiScreen(new GuiKeybindsMenu());
 							NotEnoughKeys.log("Replaced the instance of LiteLoader's controls gui!");
 						}
@@ -29,8 +26,7 @@ public class Ticker implements ITickHandler{
 					liteloaderExists = false;
 				}
 			}
-			if(Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen instanceof GuiControls 
-					&& !(Minecraft.getMinecraft().currentScreen instanceof GuiControlsOverride)){
+			if (Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen instanceof GuiControls && !(Minecraft.getMinecraft().currentScreen instanceof GuiControlsOverride)) {
 				Minecraft.getMinecraft().displayGuiScreen(new GuiKeybindsMenu());
 				NotEnoughKeys.log("Replaced the instance of Minecraft controls gui!");
 			}
@@ -38,9 +34,7 @@ public class Ticker implements ITickHandler{
 	}
 
 	@Override
-	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
-	
-	}
+	public void tickEnd(EnumSet<TickType> type, Object... tickData) {}
 
 	@Override
 	public EnumSet<TickType> ticks() {
@@ -51,5 +45,4 @@ public class Ticker implements ITickHandler{
 	public String getLabel() {
 		return "Not Enough Ticker";
 	}
-
 }
