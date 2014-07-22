@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -109,13 +110,13 @@ public class KeybindTracker {
 			field_.setAccessible(true);
 			return field_;
 		} catch (NoSuchFieldException e) {
-			NotEnoughKeys.log(String.format("== Field %s %s not found !\n", classname, fieldname));
+			NotEnoughKeys.logger.log(Level.WARNING, String.format("== Field %s %s not found !\n", classname, fieldname));
 			return null;
 		} catch (SecurityException e) {
-			NotEnoughKeys.log(String.format("== Field %s %s security exception !\n", classname, fieldname));
+			NotEnoughKeys.logger.log(Level.WARNING, String.format("== Field %s %s security exception !\n", classname, fieldname));
 			return null;
 		} catch (ClassNotFoundException e) {
-			NotEnoughKeys.log(String.format("== Class %s not found !\n", classname));
+			NotEnoughKeys.logger.log(Level.WARNING, String.format("== Class %s not found !\n", classname));
 			return null;
 		}
 	}

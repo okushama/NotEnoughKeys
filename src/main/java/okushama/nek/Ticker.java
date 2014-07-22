@@ -1,6 +1,7 @@
 package okushama.nek;
 
 import java.util.EnumSet;
+import java.util.logging.Level;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiControls;
@@ -19,7 +20,7 @@ public class Ticker implements ITickHandler {
 					if (liteloadergui != null) {
 						if (Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen.getClass().equals(liteloadergui)) {
 							Minecraft.getMinecraft().displayGuiScreen(new GuiKeybindsMenu());
-							NotEnoughKeys.log("Replaced the instance of LiteLoader's controls gui!");
+							NotEnoughKeys.logger.log(Level.INFO, "Replaced the instance of LiteLoader's controls gui!");
 						}
 					}
 				} catch (ClassNotFoundException e) {
@@ -28,7 +29,7 @@ public class Ticker implements ITickHandler {
 			}
 			if (Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen instanceof GuiControls && !(Minecraft.getMinecraft().currentScreen instanceof GuiControlsOverride)) {
 				Minecraft.getMinecraft().displayGuiScreen(new GuiKeybindsMenu());
-				NotEnoughKeys.log("Replaced the instance of Minecraft controls gui!");
+				NotEnoughKeys.logger.log(Level.INFO, "Replaced the instance of Minecraft controls gui!");
 			}
 		}
 	}
